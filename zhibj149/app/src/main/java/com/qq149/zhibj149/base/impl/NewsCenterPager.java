@@ -36,5 +36,11 @@ public class NewsCenterPager extends BasePager {
         tvTitle.setText("新闻");
         //显示菜单按钮
         btnMenu.setVisibility(View.VISIBLE);
+
+
+        //请求服务器，获取数据
+        //开源框架：XUtils
+
+
     }
 }

@@ -1,0 +1,37 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:1-11:12
+	package
+		ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:3:5-50
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:5:5-30
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml:4:5-28
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+uses-sdk
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		ADDED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml
+		INJECTED from C:\Users\zhu\AndroidStudioProjects\zhbjClient\zhibj149\SlidingMenuLibrary\AndroidManifest.xml

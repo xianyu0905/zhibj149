@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]

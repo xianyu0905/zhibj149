@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\621cb4f34436f4f5f6ec607ff21fedd2\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\621cb4f34436f4f5f6ec607ff21fedd2\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\621cb4f34436f4f5f6ec607ff21fedd2\\res\\drawable-v21\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\621cb4f34436f4f5f6ec607ff21fedd2\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_list_divider_material.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\621cb4f34436f4f5f6ec607ff21fedd2\\res\\drawable-v21\\abc_list_divider_material.xml"
+    }
+]

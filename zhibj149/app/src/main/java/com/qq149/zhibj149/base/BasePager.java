@@ -6,7 +6,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.qq149.zhibj149.MainActivity;
 import com.qq149.zhibj149.R;
+import com.qq149.zhibj149.fragment.LeftMenuFragment;
 
 /**
  * 五个标签页的基类
@@ -18,7 +21,7 @@ import com.qq149.zhibj149.R;
 public class BasePager {
     public Activity mActivity;
     public TextView tvTitle;
-    public ImageButton btnMenu;
+    public ImageButton btnMenu;//头部左上角的按钮
     public FrameLayout flContent;//空的帧布局对象，要动态添加布局
 
     public View mRootView;//当前页面的布局对象
@@ -34,10 +37,26 @@ public class BasePager {
         tvTitle = view.findViewById(R.id.tv_title);
         btnMenu = view.findViewById(R.id.btn_menu);
         flContent = view.findViewById(R.id.fl_content);
+
+        //btnMenu点击按钮侧边栏就出来
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle();
+            }
+        });
         return view;
     }
+
+    private void toggle() {
+        MainActivity mainUI = (MainActivity) mActivity;
+        SlidingMenu slidingMenu =mainUI.getSlidingMenu();
+        slidingMenu.toggle();//如果当前状态是开，调用后就关；反之亦然
+    }
+
     //初始化数据
     public void initData(){
 
     }
+
 }

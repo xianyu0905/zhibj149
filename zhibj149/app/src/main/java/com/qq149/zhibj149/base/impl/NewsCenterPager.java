@@ -15,8 +15,10 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.qq149.zhibj149.MainActivity;
 import com.qq149.zhibj149.base.BasePager;
 import com.qq149.zhibj149.domain.NewsMenu;
+import com.qq149.zhibj149.fragment.LeftMenuFragment;
 import com.qq149.zhibj149.global.GlobalConstants;
 import com.qq149.zhibj149.utils.CacheUtils;
 
@@ -101,6 +103,13 @@ public class NewsCenterPager extends BasePager {
         Gson gson = new Gson();
         NewsMenu data  = gson.fromJson(json, NewsMenu.class);
         System.out.println("解析结果："+data);
+
+        //获取侧边栏对象
+        MainActivity mainUI = (MainActivity) mActivity;
+        LeftMenuFragment fragment = mainUI.getLeftMenuFragment();
+
+        //给侧边栏设置数据
+        fragment.setMenuData(data.data);
     }
 
 

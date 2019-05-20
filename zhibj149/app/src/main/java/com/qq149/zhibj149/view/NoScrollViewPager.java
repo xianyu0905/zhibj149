@@ -32,7 +32,7 @@ public class NoScrollViewPager extends ViewPager {
     //事件拦截
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        //不拦截子控件的事件
-        return false;
+
+        return false;//不拦截子控件的事件
     }
 }

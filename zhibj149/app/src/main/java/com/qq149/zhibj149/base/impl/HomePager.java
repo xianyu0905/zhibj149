@@ -29,7 +29,8 @@ public class HomePager extends BasePager {
         view.setTextColor(Color.RED);
         view.setTextSize(22);
         view.setGravity(Gravity.CENTER);
-       flContent.addView(view);
+
+        flContent.addView(view);
 
        //修改页面标题
         tvTitle.setText("智慧北京");

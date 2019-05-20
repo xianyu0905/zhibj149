@@ -14,6 +14,7 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.qq149.zhibj149.MainActivity;
 import com.qq149.zhibj149.R;
+import com.qq149.zhibj149.base.impl.NewsCenterPager;
 import com.qq149.zhibj149.domain.NewsMenu;
 
 import java.util.ArrayList;
@@ -65,12 +66,30 @@ public class  LeftMenuFragment extends BaseFragment{
 
                     //收起侧边栏
                     toggle();
+
+                    //侧边栏点击之后，要修改新闻中心的FrameLayout中的内容
+                    setCurrentDetailPager(position);
                 }
         });
     }
 
     /**
-     * 打开或者关闭(侧边栏用到)
+     * 设置当前菜单详情页
+     * @param position
+     */
+    private void setCurrentDetailPager(int position) {
+        //获取新闻中心的对象
+        MainActivity mainUI = (MainActivity) mActivity;
+        //获取ContentFragment
+        ContentFragment fragment = mainUI.getContentFragment();
+        //获取NewsCenterPager
+        NewsCenterPager newsCenterPager =fragment.getNewsCenterPager();
+        //修改新闻中心的FragLayout的布局
+        newsCenterPager.setCurrentDetailPager(position);
+    }
+
+    /**
+     * 打开或者关闭(侧边栏)
      */
     public void toggle() {
         MainActivity mainUI = (MainActivity) mActivity;

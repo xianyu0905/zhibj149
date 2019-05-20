@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
+
 import com.qq149.zhibj149.fragment.ContentFragment;
 import com.qq149.zhibj149.fragment.LeftMenuFragment;
 
@@ -58,10 +59,16 @@ public class MainActivity extends SlidingFragmentActivity {
 
 
     }
-    //获取侧边栏fragment对象
+    //获取-侧边栏-fragment对象
     public LeftMenuFragment getLeftMenuFragment(){
         FragmentManager fm = getSupportFragmentManager();
         LeftMenuFragment fragment = (LeftMenuFragment) fm.findFragmentByTag(TAG_LEFT_MENU);//根据标记找到对应的fragment
+        return fragment;
+    }
+    //获取-主页-fragment对象
+    public ContentFragment getContentFragment(){
+        FragmentManager fm = getSupportFragmentManager();
+        ContentFragment fragment = (ContentFragment) fm.findFragmentByTag(TAG_CONTENT);//根据标记找到对应的fragment
         return fragment;
     }
 }

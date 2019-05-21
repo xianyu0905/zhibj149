@@ -28,6 +28,7 @@ import com.qq149.zhibj149.domain.NewsMenu.NewsTabData;
 import com.qq149.zhibj149.domain.NewsTabBean;
 import com.qq149.zhibj149.global.GlobalConstants;
 import com.qq149.zhibj149.utils.CacheUtils;
+import com.qq149.zhibj149.view.PullToRefreshListView;
 import com.qq149.zhibj149.view.TopNewsViewPager;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -57,7 +58,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
     private TextView tvTitle;
 
     @ViewInject(R.id.lv_list)
-    private ListView lvList;
+    private PullToRefreshListView lvList;
 
 
     private String mUrl;

@@ -1,0 +1,47 @@
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+    <com.qq149.zhibj149.view.TopNewsViewPager
+        android:id="@+id/vp_top_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#a000"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:fillColor="#f00"
+            app:pageColor="#cccccc"
+            app:radius="3dp"
+            app:strokeWidth="0dp" />
+
+    </RelativeLayout>
+</FrameLayout>
+</LinearLayout>

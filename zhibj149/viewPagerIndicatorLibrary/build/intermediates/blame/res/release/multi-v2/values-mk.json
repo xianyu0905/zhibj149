@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-mk\\values-mk.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\values-mk\\values-mk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\values-mk\\values-mk.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\values-mk\\values-mk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

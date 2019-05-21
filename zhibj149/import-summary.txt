@@ -1,15 +1,24 @@
 ECLIPSE ANDROID PROJECT IMPORT SUMMARY
 ======================================
 
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* pom.xml
+
 Moved Files:
 ------------
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => xUtilsLibrary\src\main\AndroidManifest.xml
-* assets\ => xUtilsLibrary\src\main\assets
-* res\ => xUtilsLibrary\src\main\res
-* src\ => xUtilsLibrary\src\main\java\
+* AndroidManifest.xml => viewPagerIndicatorLibrary\src\main\AndroidManifest.xml
+* assets\ => viewPagerIndicatorLibrary\src\main\assets
+* libs\android-support-v4.jar => viewPagerIndicatorLibrary\libs\android-support-v4.jar
+* res\ => viewPagerIndicatorLibrary\src\main\res\
+* src\ => viewPagerIndicatorLibrary\src\main\java\
 
 Next Steps:
 -----------

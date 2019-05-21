@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_big_media.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_media_action.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\fd51b75bdba6bceda3f2c7b97403d2f0\\res\\layout\\notification_template_lines_media.xml"
+    }
+]

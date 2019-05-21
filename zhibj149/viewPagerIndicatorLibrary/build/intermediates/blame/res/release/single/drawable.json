@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\vpi__tab_indicator.xml",
+        "source": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\drawable\\notification_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\zhu\\AndroidStudioProjects\\zhbjClient\\zhibj149\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
+        "source": "C:\\Users\\zhu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\67a7d29b2fb5c952a25152939e187f24\\res\\drawable\\notification_bg_low.xml"
+    }
+]

@@ -5,43 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+
+    <ListView
+        android:id="@+id/lv_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.qq149.zhibj149.view.TopNewsViewPager
-            android:id="@+id/vp_top_news"
-            android:layout_width="wrap_content"
-            android:layout_height="180dp" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:padding="10dp"
-            android:background="#a000">
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="标题"
-                android:textSize="16sp"
-                android:textColor="#fff"/>
-            <com.viewpagerindicator.CirclePageIndicator
-                android:id="@+id/indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                app:radius="3dp"
-                app:fillColor="#f00"
-                app:pageColor="#cccccc"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                app:strokeWidth="0dp"
-               />
-
-        </RelativeLayout>
-    </FrameLayout>
-
+        android:layout_height="match_parent"
+        android:cacheColorHint="#fff"/>
 
 </LinearLayout>

@@ -33,18 +33,22 @@ import java.util.ArrayList;
 
 /**
  * 页签页面对象
+ *
  * @author zhuww
  * @description: 149
  * @date :2019/5/20 21:01
  */
 public class TabDetailPager extends BaseMenuDetailPager {
 
-    private  BitmapUtils mBitmapUtils;
+    private BitmapUtils mBitmapUtils;
     private NewsTabData mTabData;//单个页签的网络数据
-   // private TextView view;
+    // private TextView view;
 
     @ViewInject(R.id.vp_top_news)
-    private TopNewsViewPager  mViewPager;
+    private TopNewsViewPager mViewPager;
+
+    @ViewInject(R.id.tv_title)
+    private TextView tvTitle;
 
     private String mUrl;
 
@@ -67,8 +71,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
         view.setTextColor(Color.RED);
         view.setTextSize(22);
         view.setGravity(Gravity.CENTER);*/
-        View view = View.inflate(mActivity, R.layout.pager_tab_detail,null);
-        ViewUtils.inject(this,view);
+        View view = View.inflate(mActivity, R.layout.pager_tab_detail, null);
+        ViewUtils.inject(this, view);
         return view;
     }
 
@@ -76,8 +80,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
     public void initData() {
         //view.setText(mTabData.title);
         //加图片缓存
-        String cache=CacheUtils.getCache(mUrl,mActivity);
-        if (!TextUtils.isEmpty(cache)){
+        String cache = CacheUtils.getCache(mUrl, mActivity);
+        if (!TextUtils.isEmpty(cache)) {
             processDate(cache);
         }
         getDataFromServer();
@@ -91,39 +95,67 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 String result = responseInfo.result;
                 processDate(result);
 
-                CacheUtils.setCache(mUrl,result,mActivity);
+                CacheUtils.setCache(mUrl, result, mActivity);
             }
 
             @Override
             public void onFailure(HttpException error, String msg) {
                 //请求失败
                 error.printStackTrace();
-                Toast.makeText(mActivity,msg,Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     /**
      * 3.08
+     *
      * @param result
      */
-    protected  void  processDate(String result){
+    protected void processDate(String result) {
         Gson gson = new Gson();
-        NewsTabBean newsTabBean =gson.fromJson(result, NewsTabBean.class);
+        NewsTabBean newsTabBean = gson.fromJson(result, NewsTabBean.class);
 
         //头条新闻填充数据
-        mTopNews=newsTabBean.data.topnews;
+        mTopNews = newsTabBean.data.topnews;
 
-        if (mTopNews !=null){
+        if (mTopNews != null) {
             mViewPager.setAdapter(new TopNewsAdapter());
+
+
+            mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset,
+                                           int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    //更新头条新闻标题
+                    NewsTabBean.TopNews topNews =  mTopNews.get(position);
+                    tvTitle.setText(topNews.title);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+
+            //更新第一个头条新闻标题
+            tvTitle.setText(mTopNews.get(0).title);
         }
     }
-    //头条新闻数据适配器
-    class TopNewsAdapter extends PagerAdapter{
 
-        public TopNewsAdapter(){
+    //头条新闻数据适配器
+    class TopNewsAdapter extends PagerAdapter {
+
+        public TopNewsAdapter() {
             mBitmapUtils = new BitmapUtils(mActivity);
+            mBitmapUtils.configDefaultLoadFailedImage(R.drawable.topnews_item_default);//设置加载中的默认图片
         }
+
         @Override
         public int getCount() {
             return mTopNews.size();
@@ -139,13 +171,13 @@ public class TabDetailPager extends BaseMenuDetailPager {
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             ImageView view = new ImageView(mActivity);
             //设置默认图片
-            view.setImageResource(R.drawable.topnews_item_default);
+           // view.setImageResource(R.drawable.topnews_item_default);//没用
             view.setScaleType(ImageView.ScaleType.FIT_XY);//设置图片缩放方式，宽高填充父控件
             String imageUrl = mTopNews.get(position).topimage;//图片下载链接
 
             //下载图片--将图片设置为ImageView-避免内存溢出-缓存
             //BitmapUtils-XUtils
-            mBitmapUtils.display(view,imageUrl);
+            mBitmapUtils.display(view, imageUrl);
             container.addView(view);
 
             return view;
@@ -153,7 +185,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
         @Override
         public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-           container.removeView((View) object);
+            container.removeView((View) object);
         }
     }
 

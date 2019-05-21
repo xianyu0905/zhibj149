@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -22,6 +25,10 @@ import com.qq149.zhibj149.base.BaseMenuDetailPager;
 import com.qq149.zhibj149.domain.NewsMenu.NewsTabData;
 import com.qq149.zhibj149.domain.NewsTabBean;
 import com.qq149.zhibj149.global.GlobalConstants;
+import com.qq149.zhibj149.utils.CacheUtils;
+import com.qq149.zhibj149.view.TopNewsViewPager;
+
+import java.util.ArrayList;
 
 
 /**
@@ -32,11 +39,16 @@ import com.qq149.zhibj149.global.GlobalConstants;
  */
 public class TabDetailPager extends BaseMenuDetailPager {
 
+    private  BitmapUtils mBitmapUtils;
     private NewsTabData mTabData;//单个页签的网络数据
    // private TextView view;
+
     @ViewInject(R.id.vp_top_news)
-    private ViewPager mViewPager;
-    String mUrl;
+    private TopNewsViewPager  mViewPager;
+
+    private String mUrl;
+
+    private ArrayList<NewsTabBean.TopNews> mTopNews;
 
 
     public TabDetailPager(Activity activity, NewsTabData newsTabData) {
@@ -55,7 +67,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
         view.setTextColor(Color.RED);
         view.setTextSize(22);
         view.setGravity(Gravity.CENTER);*/
-       View view = View.inflate(mActivity, R.layout.pager_tab_detail,null);
+        View view = View.inflate(mActivity, R.layout.pager_tab_detail,null);
         ViewUtils.inject(this,view);
         return view;
     }
@@ -63,15 +75,23 @@ public class TabDetailPager extends BaseMenuDetailPager {
     @Override
     public void initData() {
         //view.setText(mTabData.title);
+        //加图片缓存
+        String cache=CacheUtils.getCache(mUrl,mActivity);
+        if (!TextUtils.isEmpty(cache)){
+            processDate(cache);
+        }
         getDataFromServer();
     }
 
     private void getDataFromServer() {
         HttpUtils utils = new HttpUtils();
-        utils.send(HttpRequest.HttpMethod.GET, "", new RequestCallBack<String>() {
+        utils.send(HttpRequest.HttpMethod.GET, mUrl, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
+                processDate(result);
+
+                CacheUtils.setCache(mUrl,result,mActivity);
             }
 
             @Override
@@ -90,13 +110,23 @@ public class TabDetailPager extends BaseMenuDetailPager {
     protected  void  processDate(String result){
         Gson gson = new Gson();
         NewsTabBean newsTabBean =gson.fromJson(result, NewsTabBean.class);
+
+        //头条新闻填充数据
+        mTopNews=newsTabBean.data.topnews;
+
+        if (mTopNews !=null){
+            mViewPager.setAdapter(new TopNewsAdapter());
+        }
     }
     //头条新闻数据适配器
     class TopNewsAdapter extends PagerAdapter{
 
+        public TopNewsAdapter(){
+            mBitmapUtils = new BitmapUtils(mActivity);
+        }
         @Override
         public int getCount() {
-            return 0;
+            return mTopNews.size();
         }
 
         @Override
@@ -107,12 +137,23 @@ public class TabDetailPager extends BaseMenuDetailPager {
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            return super.instantiateItem(container, position);
+            ImageView view = new ImageView(mActivity);
+            //设置默认图片
+            view.setImageResource(R.drawable.topnews_item_default);
+            view.setScaleType(ImageView.ScaleType.FIT_XY);//设置图片缩放方式，宽高填充父控件
+            String imageUrl = mTopNews.get(position).topimage;//图片下载链接
+
+            //下载图片--将图片设置为ImageView-避免内存溢出-缓存
+            //BitmapUtils-XUtils
+            mBitmapUtils.display(view,imageUrl);
+            container.addView(view);
+
+            return view;
         }
 
         @Override
         public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            super.destroyItem(container, position, object);
+           container.removeView((View) object);
         }
     }
 

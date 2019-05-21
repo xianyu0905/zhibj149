@@ -15,7 +15,7 @@ public class NewsTabBean {
     public class NewsTab{
         public String more;
         public ArrayList<NewsData> news;
-        public ArrayList<NewsData> topnews;
+        public ArrayList<TopNews> topnews;
     }
     //新闻列表对象
     public  class NewsData{
@@ -27,7 +27,7 @@ public class NewsTabBean {
         public String url;
     }
     //头条新闻
-    public  class TopData{
+    public  class TopNews{
         public int id;
         public String topimage;
         public String pubdate;

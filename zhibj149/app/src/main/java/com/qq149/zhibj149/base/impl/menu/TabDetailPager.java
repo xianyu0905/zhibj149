@@ -27,6 +27,7 @@ import com.qq149.zhibj149.domain.NewsTabBean;
 import com.qq149.zhibj149.global.GlobalConstants;
 import com.qq149.zhibj149.utils.CacheUtils;
 import com.qq149.zhibj149.view.TopNewsViewPager;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
     @ViewInject(R.id.vp_top_news)
     private TopNewsViewPager mViewPager;
+
+    @ViewInject(R.id.indicator)
+    private CirclePageIndicator mIndicator;
 
     @ViewInject(R.id.tv_title)
     private TextView tvTitle;
@@ -121,9 +125,11 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
         if (mTopNews != null) {
             mViewPager.setAdapter(new TopNewsAdapter());
+            mIndicator.setViewPager(mViewPager);
+            mIndicator.setSnap(true);//快照方式展示
 
-
-            mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            //事件要设mIndicator
+            mIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset,
                                            int positionOffsetPixels) {
@@ -145,6 +151,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
             //更新第一个头条新闻标题
             tvTitle.setText(mTopNews.get(0).title);
+            //默认让第一个选中（解决页面销毁后重新初始化时，Indicator仍然保留上次圆点位置的bug）
+            mIndicator.onPageSelected(0);
         }
     }
 

@@ -78,9 +78,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
     public View initView() {
         //要给帧布局填充布局对象
        /* view = new TextView(mActivity);
-
         //view.setText(mTabData.title);//此处空指针
-
         view.setTextColor(Color.RED);
         view.setTextSize(22);
         view.setGravity(Gravity.CENTER);*/
@@ -123,7 +121,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
         HttpUtils utils = new HttpUtils();
         utils.send(HttpRequest.HttpMethod.GET, mUrl, new RequestCallBack<String>() {
             @Override
-            public void onSuccess(ResponseInfo<String> responseInfo) {
+            public void onSuccess(ResponseInfo<String> responseInfo) {//在主线程
                 String result = responseInfo.result;
                 processDate(result);
 
@@ -134,7 +132,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
             }
 
             @Override
-            public void onFailure(HttpException error, String msg) {
+            public void onFailure(HttpException error, String msg) {//在主线程
                 //请求失败
                 error.printStackTrace();
                 Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();

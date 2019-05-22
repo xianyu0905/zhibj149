@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -21,7 +22,7 @@ import java.util.Date;
  * @description: 149
  * @date :2019/5/21 22:23
  */
-public class PullToRefreshListView extends ListView {
+public class PullToRefreshListView extends ListView implements AbsListView.OnScrollListener {
 
     //声明几种状态
     private static final int STATE_PULL_TO_REFRESH = 1;
@@ -41,19 +42,24 @@ public class PullToRefreshListView extends ListView {
     private RotateAnimation animDown;
     private ProgressBar pbProgressBar;
 
+    private View mFooterView;
+
     public PullToRefreshListView(Context context) {
         super(context);
         initHeaderView();
+        initFooterView();
     }
 
     public PullToRefreshListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initHeaderView();
+        initFooterView();
     }
 
     public PullToRefreshListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initHeaderView();
+        initFooterView();
     }
 
 
@@ -61,7 +67,7 @@ public class PullToRefreshListView extends ListView {
      * 初始化头布局
      */
     private void initHeaderView() {
-        mHeaderView = View.inflate(getContext(), R.layout.pull_to_refresh, null);
+        mHeaderView = View.inflate(getContext(), R.layout.pull_to_refresh_header, null);
         this.addHeaderView(mHeaderView);
 
         tvTitle = mHeaderView.findViewById(R.id.tv_title);
@@ -217,6 +223,22 @@ public class PullToRefreshListView extends ListView {
         }
 
     }
+    /**
+     * 初始化脚步局
+     */
+    private void initFooterView(){
+        mFooterView = View.inflate(getContext(),R.layout.pull_to_refresh_footer,null);
+        this.addFooterView(mFooterView);
+
+        mFooterView.measure(0,0);
+        int mFooterViewHeight = mFooterView.getMeasuredHeight();
+
+        //隐藏脚步局
+        mFooterView.setPadding(0,-mFooterViewHeight,0,0);
+
+        //给listView 设置滑动监听
+        this.setOnScrollListener(this);//滑动监听
+    }
 
     /**
      * 3.定义成员变量，接收监听对象
@@ -236,5 +258,27 @@ public class PullToRefreshListView extends ListView {
     //回调接口
     public interface OnRefreshListener {
         public void onRefresh();
+    }
+
+    //滑动状态发生变化
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        if (scrollState == SCROLL_STATE_IDLE){//空闲状态
+            int lastVisiblePosition = getLastVisiblePosition();
+
+            if (lastVisiblePosition == getCount()-1){
+                //到底了
+                System.out.println("加载更多...");
+                mFooterView.setPadding(0,0,0,0);//显示加载更多的布局
+
+                setSelection(getCount()-1);//将listViem 显示在最后一个item上，从而加载会直接展示出来，无需手动滑动
+            }
+
+        }
+    }
+    //滑动过程回顾
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
     }
 }

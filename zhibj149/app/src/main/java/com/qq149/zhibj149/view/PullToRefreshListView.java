@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.qq149.zhibj149.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author zhuww
  * @description: 149
@@ -72,6 +75,16 @@ public class PullToRefreshListView extends ListView {
         mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
 
         initAnim();
+        setCurrentTime();//刚进来也得调用下，不然是默认时间
+    }
+
+    //设置刷新时间
+    private void setCurrentTime(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//MM 大写，从1月开始，小写的话从零开始
+        String time = format.format(new Date());
+
+        tvTime.setText(time);
+
     }
 
     @Override
@@ -189,14 +202,20 @@ public class PullToRefreshListView extends ListView {
     /**
      * 刷新结束，收起控件
      */
-    public void onRefreshComplete(){
-        //隐藏
-        mHeaderView.setPadding(0,-mHeaderViewHeight,0,0);
-        //归为原状
-        mCurrentState = STATE_PULL_TO_REFRESH;
-        tvTitle.setText("下拉刷新");
-        pbProgressBar.setVisibility(View.INVISIBLE);
-        ivArrow.setVisibility(View.VISIBLE);
+    public void onRefreshComplete(boolean sucess){
+
+        if (sucess){//只有刷新成功之后才更新时间
+            //隐藏
+            mHeaderView.setPadding(0,-mHeaderViewHeight,0,0);
+            //归为原状
+            mCurrentState = STATE_PULL_TO_REFRESH;
+            tvTitle.setText("下拉刷新");
+            pbProgressBar.setVisibility(View.INVISIBLE);
+            ivArrow.setVisibility(View.VISIBLE);
+
+            setCurrentTime();
+        }
+
     }
 
     /**
@@ -208,7 +227,7 @@ public class PullToRefreshListView extends ListView {
      * 2.暴露接口，设置监听
      */
     public void setOnRefreshListener(OnRefreshListener listener) {
-
+        mListener=listener;
     }
 
     /**

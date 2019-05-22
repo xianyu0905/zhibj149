@@ -130,7 +130,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 CacheUtils.setCache(mUrl, result, mActivity);
 
                 //收起下拉刷新控件
-                lvList.onRefreshComplete();
+                lvList.onRefreshComplete(true);
             }
 
             @Override
@@ -140,7 +140,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();
 
                 //收起下拉刷新控件
-                lvList.onRefreshComplete();
+                lvList.onRefreshComplete(false);
             }
         });
     }

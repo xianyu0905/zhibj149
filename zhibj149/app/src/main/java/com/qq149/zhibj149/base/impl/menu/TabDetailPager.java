@@ -1,6 +1,7 @@
 package com.qq149.zhibj149.base.impl.menu;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -24,6 +25,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.qq149.zhibj149.NewsDetailActivity;
 import com.qq149.zhibj149.R;
 import com.qq149.zhibj149.base.BaseMenuDetailPager;
 import com.qq149.zhibj149.domain.NewsMenu.NewsTabData;
@@ -139,10 +141,14 @@ public class TabDetailPager extends BaseMenuDetailPager {
                     PrefUtils.setString(mActivity, "read_ids", readIds);
                 }
                 //要将被点击的item的文字颜色改为灰色，局部刷新，view对象就是当前被点击的对象
-                //TextView tvTitle = view.findViewById(R.id.tv_title);
-                //tvTitle.setTextColor(Color.GRAY);
-                mNewsAdapter.notifyDataSetChanged();//全局刷新
+                TextView tvTitle = view.findViewById(R.id.tv_title);
+                tvTitle.setTextColor(Color.GRAY);
+                //mNewsAdapter.notifyDataSetChanged();//全局刷新
 
+                //跳到新闻详情页面
+                Intent intent =  new Intent(mActivity, NewsDetailActivity.class);
+                intent.putExtra("url",news.url);
+                mActivity.startActivity(intent);
 
             }
         });
@@ -311,6 +317,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
             //下载图片--将图片设置为ImageView-避免内存溢出-缓存
             //BitmapUtils-XUtils
             mBitmapUtils.display(view, imageUrl);
+            //mBitmapUtils.display(view, imageUrl.replace("http://10.0.2.2:8080/zhbj",GlobalConstants.SERVER_URL));
             container.addView(view);
 
             return view;
@@ -371,6 +378,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
             }
 
             mBitmapUtils.display(holder.ivIcon, news.listimage);
+            //mBitmapUtils.display(holder.ivIcon,news.listimage.replace("http://10.0.2.2:8080/zhbj", GlobalConstants.SERVER_URL));
             return convertView;
         }
     }

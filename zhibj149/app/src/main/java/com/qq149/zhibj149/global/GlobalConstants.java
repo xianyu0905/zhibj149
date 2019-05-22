@@ -1,5 +1,4 @@
 package com.qq149.zhibj149.global;
-
 /**
  * 定义全局变量
  * @author zhuww

@@ -43,6 +43,7 @@ public class PullToRefreshListView extends ListView implements AbsListView.OnScr
     private ProgressBar pbProgressBar;
 
     private View mFooterView;
+    private int mFooterViewHeight;
 
     public PullToRefreshListView(Context context) {
         super(context);
@@ -85,7 +86,7 @@ public class PullToRefreshListView extends ListView implements AbsListView.OnScr
     }
 
     //设置刷新时间
-    private void setCurrentTime(){
+    private void setCurrentTime() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//MM 大写，从1月开始，小写的话从零开始
         String time = format.format(new Date());
 
@@ -208,33 +209,43 @@ public class PullToRefreshListView extends ListView implements AbsListView.OnScr
     /**
      * 刷新结束，收起控件
      */
-    public void onRefreshComplete(boolean sucess){
+    public void onRefreshComplete(boolean sucess) {
 
-        if (sucess){//只有刷新成功之后才更新时间
+
+        if (!isLoadMore) {//只有刷新成功之后才更新时间
             //隐藏
-            mHeaderView.setPadding(0,-mHeaderViewHeight,0,0);
+            mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
             //归为原状
             mCurrentState = STATE_PULL_TO_REFRESH;
             tvTitle.setText("下拉刷新");
             pbProgressBar.setVisibility(View.INVISIBLE);
             ivArrow.setVisibility(View.VISIBLE);
 
-            setCurrentTime();
+            //加个判断，把下拉刷新图标隐藏掉
+            if (sucess) {
+                setCurrentTime();
+            }
+        } else {
+            //加载更多
+            mFooterView.setPadding(0, -mHeaderViewHeight, 0, 0);//隐藏布局
+
+            isLoadMore = false;//重新置为false
         }
 
     }
+
     /**
      * 初始化脚步局
      */
-    private void initFooterView(){
-        mFooterView = View.inflate(getContext(),R.layout.pull_to_refresh_footer,null);
+    private void initFooterView() {
+        mFooterView = View.inflate(getContext(), R.layout.pull_to_refresh_footer, null);
         this.addFooterView(mFooterView);
 
-        mFooterView.measure(0,0);
-        int mFooterViewHeight = mFooterView.getMeasuredHeight();
+        mFooterView.measure(0, 0);
+        mFooterViewHeight = mFooterView.getMeasuredHeight();
 
         //隐藏脚步局
-        mFooterView.setPadding(0,-mFooterViewHeight,0,0);
+        mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
 
         //给listView 设置滑动监听
         this.setOnScrollListener(this);//滑动监听
@@ -249,7 +260,7 @@ public class PullToRefreshListView extends ListView implements AbsListView.OnScr
      * 2.暴露接口，设置监听
      */
     public void setOnRefreshListener(OnRefreshListener listener) {
-        mListener=listener;
+        mListener = listener;
     }
 
     /**
@@ -258,24 +269,38 @@ public class PullToRefreshListView extends ListView implements AbsListView.OnScr
     //回调接口
     public interface OnRefreshListener {
         public void onRefresh();
+        //加载更多
+        public void onLoadMore();
     }
+
+    private boolean isLoadMore;//标记是否在加载更多
 
     //滑动状态发生变化
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-        if (scrollState == SCROLL_STATE_IDLE){//空闲状态
+        if (scrollState == SCROLL_STATE_IDLE) {//空闲状态
             int lastVisiblePosition = getLastVisiblePosition();
 
-            if (lastVisiblePosition == getCount()-1){
+            if (lastVisiblePosition == getCount() - 1 && !isLoadMore) {//当前显示的最后一个item并且没有加载更多
                 //到底了
                 System.out.println("加载更多...");
-                mFooterView.setPadding(0,0,0,0);//显示加载更多的布局
 
-                setSelection(getCount()-1);//将listViem 显示在最后一个item上，从而加载会直接展示出来，无需手动滑动
+                isLoadMore = true;//表示正在加载
+
+                mFooterView.setPadding(0, 0, 0, 0);//显示加载更多的布局
+
+                setSelection(getCount() - 1);//将listViem 显示在最后一个item上，从而加载会直接展示出来，无需手动滑动
+
+                //通知主界面加载下一页
+                if (mListener != null) {
+                    mListener.onLoadMore();
+                }
+
             }
 
         }
     }
+
     //滑动过程回顾
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {

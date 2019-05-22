@@ -84,13 +84,26 @@ public class TabDetailPager extends BaseMenuDetailPager {
         view.setTextColor(Color.RED);
         view.setTextSize(22);
         view.setGravity(Gravity.CENTER);*/
+
         View view = View.inflate(mActivity, R.layout.pager_tab_detail, null);
         ViewUtils.inject(this, view);
 
         //给listview添加头布局
-        View mHeaderView = View.inflate(mActivity,R.layout.list_item_header,null);
+        View mHeaderView = View.inflate(mActivity, R.layout.list_item_header, null);
         ViewUtils.inject(this, mHeaderView);//此处将头布局也注入
         lvList.addHeaderView(mHeaderView);
+
+        /**
+         * 5.前端界面设置回调（设置回调监听）
+         */
+
+        lvList.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //刷新数据
+                getDataFromServer();
+            }
+        });
 
         return view;
     }
@@ -115,6 +128,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 processDate(result);
 
                 CacheUtils.setCache(mUrl, result, mActivity);
+
+                //收起下拉刷新控件
+                lvList.onRefreshComplete();
             }
 
             @Override
@@ -122,6 +138,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 //请求失败
                 error.printStackTrace();
                 Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();
+
+                //收起下拉刷新控件
+                lvList.onRefreshComplete();
             }
         });
     }
@@ -154,7 +173,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 @Override
                 public void onPageSelected(int position) {
                     //更新头条新闻标题
-                    NewsTabBean.TopNews topNews =  mTopNews.get(position);
+                    NewsTabBean.TopNews topNews = mTopNews.get(position);
                     tvTitle.setText(topNews.title);
                 }
 
@@ -170,8 +189,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
             mIndicator.onPageSelected(0);
 
             //列表新闻设置
-            mNewsList =newsTabBean.data.news;
-            if (mNewsList!=null){
+            mNewsList = newsTabBean.data.news;
+            if (mNewsList != null) {
                 mNewsAdapter = new NewsAdapter();
                 lvList.setAdapter(mNewsAdapter);
             }
@@ -220,9 +239,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
         }
     }
 
-    class NewsAdapter extends BaseAdapter{
+    class NewsAdapter extends BaseAdapter {
 
-        public NewsAdapter(){
+        public NewsAdapter() {
             mBitmapUtils = new BitmapUtils(mActivity);
             mBitmapUtils.configDefaultLoadingImage(R.drawable.news_pic_default);
         }
@@ -245,26 +264,27 @@ public class TabDetailPager extends BaseMenuDetailPager {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHoder holder;
-            if (convertView == null){
-                convertView = View.inflate(mActivity,R.layout.list_item_news,null);
+            if (convertView == null) {
+                convertView = View.inflate(mActivity, R.layout.list_item_news, null);
                 holder = new ViewHoder();
                 holder.ivIcon = convertView.findViewById(R.id.iv_icon);
                 holder.tvTitle = convertView.findViewById(R.id.tv_title);
                 holder.tvDate = convertView.findViewById(R.id.tv_date);
 
                 convertView.setTag(holder);
-            }else {
+            } else {
                 holder = (ViewHoder) convertView.getTag();
             }
             NewsTabBean.NewsData news = (NewsTabBean.NewsData) getItem(position);
             holder.tvTitle.setText(news.title);
             holder.tvDate.setText(news.pubdate);
 
-            mBitmapUtils.display(holder.ivIcon,news.listimage);
+            mBitmapUtils.display(holder.ivIcon, news.listimage);
             return convertView;
         }
     }
-    static class ViewHoder{
+
+    static class ViewHoder {
         public ImageView ivIcon;
         public TextView tvTitle;
         public TextView tvDate;

@@ -10,5 +10,5 @@ public class GlobalConstants {
     //安卓模拟器把本地的Ip地址映射成10.0.2.2///
     public static final String CATEGORY_URL=SERVER_URL+"/categories.json";//分类信息接口
     //public static final String NEWS_URL=SERVER_URL+"/categories.json";//新闻中心地址
-    //public static final String PHOTOS_URL=SERVER_URL+"/photos_1.json";//组图信息接口
+    public static final String PHOTOS_URL=SERVER_URL+"/photos/photos_1.json";//组图信息接口
 }

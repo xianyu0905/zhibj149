@@ -1,13 +1,19 @@
 package com.qq149.zhibj149;
 
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
@@ -27,6 +33,8 @@ public class MainActivity extends SlidingFragmentActivity {
 
     private static final String TAG_LEFT_MENU = "TAG_LEFT_MENU";
     private static final String TAG_CONTENT = "TAG_CONTENT";
+    private static final int REQUEST_CODE = 1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,14 @@ public class MainActivity extends SlidingFragmentActivity {
         //设置侧边栏的宽度
         slidingMenu.setBehindOffset(600);//设置屏幕预留200像素宽度
         initFragment();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_CODE);
+        }else {
+            Log.e("读写权限","获取到了");
+        }
+
     }
     /**
      * 初始化fragment
@@ -71,4 +87,16 @@ public class MainActivity extends SlidingFragmentActivity {
         ContentFragment fragment = (ContentFragment) fm.findFragmentByTag(TAG_CONTENT);//根据标记找到对应的fragment
         return fragment;
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.e("读写权限","获取到了");
+            }else {
+                Toast.makeText(this,"你拒绝了读写权限，不能进行文件读取",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

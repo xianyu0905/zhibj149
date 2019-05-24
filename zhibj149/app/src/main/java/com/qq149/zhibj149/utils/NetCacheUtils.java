@@ -24,6 +24,10 @@ public class NetCacheUtils {
     private Bitmap bitmap;
     private HttpURLConnection conn;
     private ImageView imageView;
+    private LocalCacheUtils mLocalCacheUtils;
+    public NetCacheUtils(LocalCacheUtils localCacheUtils) {
+        mLocalCacheUtils = localCacheUtils;
+    }
 
 
     public void getBitmapFromNet(ImageView imageView, String url) {
@@ -47,7 +51,7 @@ public class NetCacheUtils {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            System.out.println("onPreExecute");//
+            //System.out.println("onPreExecute");//
 
 
         }
@@ -55,7 +59,7 @@ public class NetCacheUtils {
         //2.正在加载，运行在子线程(核心方法)，可以直接异步请求
         @Override
         protected Bitmap doInBackground(Object... params) {
-            System.out.println("doInBackground");
+            //System.out.println("doInBackground");
             imageView = (ImageView) params[0];
             url = (String) params[1];
 
@@ -76,7 +80,7 @@ public class NetCacheUtils {
         //4.加载结束，运行在主线程（核心方法），可以直接跟新UI
         @Override
         protected void onPostExecute(Bitmap result) {
-            System.out.println("onPostExecute");
+            //System.out.println("onPostExecute");
             if (result != null) {
                 //给imageView设置图片
                 //由于listview的重用机制导致imageview对象可能被多个item共用，从而可能将错误的图片给了imageView对象
@@ -88,6 +92,9 @@ public class NetCacheUtils {
                     //如果是，说明图片正确
                     imageView.setImageBitmap(result);
                     System.out.println("从网络加载图片啦！！！");
+
+                    //写本地缓存
+                    mLocalCacheUtils.setLocalCache(url,result);
                 }
 
 

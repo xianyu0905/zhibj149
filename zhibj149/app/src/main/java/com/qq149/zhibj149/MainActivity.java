@@ -53,6 +53,8 @@ public class MainActivity extends SlidingFragmentActivity {
         //设置侧边栏的宽度
         slidingMenu.setBehindOffset(600);//设置屏幕预留200像素宽度
         initFragment();
+
+        //读写
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -87,6 +89,8 @@ public class MainActivity extends SlidingFragmentActivity {
         ContentFragment fragment = (ContentFragment) fm.findFragmentByTag(TAG_CONTENT);//根据标记找到对应的fragment
         return fragment;
     }
+
+    //读写
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

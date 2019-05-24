@@ -25,8 +25,10 @@ public class NetCacheUtils {
     private HttpURLConnection conn;
     private ImageView imageView;
     private LocalCacheUtils mLocalCacheUtils;
-    public NetCacheUtils(LocalCacheUtils localCacheUtils) {
+    private MemoryCacheUtils mMemoryCacheUtils;
+    public NetCacheUtils(LocalCacheUtils localCacheUtils, MemoryCacheUtils memoryCacheUtils) {
         mLocalCacheUtils = localCacheUtils;
+        mMemoryCacheUtils = memoryCacheUtils;
     }
 
 
@@ -95,6 +97,9 @@ public class NetCacheUtils {
 
                     //写本地缓存
                     mLocalCacheUtils.setLocalCache(url,result);
+
+                    //写内存缓存
+                    mMemoryCacheUtils.setMemoryCache(url,result);
                 }
 
 

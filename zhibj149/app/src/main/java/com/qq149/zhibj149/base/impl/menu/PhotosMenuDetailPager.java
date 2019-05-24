@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ import com.qq149.zhibj149.base.BaseMenuDetailPager;
 import com.qq149.zhibj149.domain.PhotosBean;
 import com.qq149.zhibj149.global.GlobalConstants;
 import com.qq149.zhibj149.utils.CacheUtils;
+import com.qq149.zhibj149.utils.MyBitmapUtils;
 
 import java.util.ArrayList;
 
@@ -38,7 +40,7 @@ import java.util.ArrayList;
  * @description: 149
  * @date :2019/5/20 19:32
  */
-public class PhotosMenuDetailPager extends BaseMenuDetailPager {
+public class PhotosMenuDetailPager extends BaseMenuDetailPager implements View.OnClickListener {
 
     @ViewInject(R.id.lv_photo)
     private ListView lvPhoto;
@@ -46,8 +48,12 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager {
     private GridView gvPhoto;
     private ArrayList<PhotosBean.PhotosData.PhotoNews> mNewsList;
 
-    public PhotosMenuDetailPager(Activity activity) {
+    private  ImageButton btnPhoto;
+    public PhotosMenuDetailPager(Activity activity, ImageButton btnPhoto) {
         super(activity);
+        btnPhoto.setOnClickListener(this);//组图切换按钮设置点击事件
+        this.btnPhoto=btnPhoto;
+
     }
 
     @Override
@@ -100,15 +106,20 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager {
         mNewsList = photosBean.data.news;
 
         lvPhoto.setAdapter(new PhotoAdapter());
+        gvPhoto.setAdapter(new PhotoAdapter());//gridview的布局结构和listview完全一致，所以可以用一个adapter
 
     }
 
+
+
     class PhotoAdapter extends BaseAdapter{
 
-        private BitmapUtils mBitmapUtils;
+        //private BitmapUtils mBitmapUtils;
+        private MyBitmapUtils mBitmapUtils;
         public PhotoAdapter(){
-            mBitmapUtils = new BitmapUtils(mActivity);
-            mBitmapUtils.configDefaultLoadingImage(R.drawable.pic_item_list_default);
+            mBitmapUtils = new MyBitmapUtils();
+            //mBitmapUtils = new BitmapUtils();
+            //mBitmapUtils.configDefaultLoadingImage(R.drawable.pic_item_list_default);
         }
         @Override
         public int getCount() {
@@ -149,6 +160,29 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager {
     static class ViewHolder{
         public ImageView ivPic;
         public TextView tvTitle;
+
+    }
+
+    private boolean isListView;//标记当前是listview展示
+
+
+    @Override
+    public void onClick(View v) {
+        if (isListView){
+            //切成gridview
+            lvPhoto.setVisibility(View.GONE);
+            gvPhoto.setVisibility(View.VISIBLE);
+            btnPhoto.setImageResource(R.drawable.icon_pic_list_type);
+
+            isListView = false;
+        }else {
+            //切成listview
+            lvPhoto.setVisibility(View.VISIBLE);
+            gvPhoto.setVisibility(View.GONE);
+            btnPhoto.setImageResource(R.drawable.icon_pic_grid_type);
+
+            isListView = true;
+        }
 
     }
 }

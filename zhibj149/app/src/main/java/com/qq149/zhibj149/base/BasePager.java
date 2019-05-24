@@ -24,6 +24,8 @@ public class BasePager {
     public ImageButton btnMenu;//头部左上角的按钮
     public FrameLayout flContent;//空的帧布局对象，要动态添加布局
 
+    public ImageButton btnPhoto;//组图切换按钮
+
     public View mRootView;//当前页面的布局对象
 
     public BasePager(Activity activity){
@@ -37,6 +39,7 @@ public class BasePager {
         tvTitle = view.findViewById(R.id.tv_title);
         btnMenu = view.findViewById(R.id.btn_menu);
         flContent = view.findViewById(R.id.fl_content);
+        btnPhoto = view.findViewById(R.id.btn_photo);
 
         //btnMenu点击按钮侧边栏就出来
         btnMenu.setOnClickListener(new View.OnClickListener() {

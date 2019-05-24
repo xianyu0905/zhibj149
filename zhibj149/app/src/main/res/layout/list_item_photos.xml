@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="标题"
+            android:singleLine="true"
             android:textColor="#000"
             android:textSize="18sp" />
     </LinearLayout>

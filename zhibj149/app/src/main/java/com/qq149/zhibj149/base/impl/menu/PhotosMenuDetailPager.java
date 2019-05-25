@@ -152,7 +152,8 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager implements View.O
             PhotosBean.PhotosData.PhotoNews item = getItem(position);
 
             holder.tvTitle.setText(item.title);
-            mBitmapUtils.display(holder.ivPic,item.listimage);
+           // mBitmapUtils.display(holder.ivPic,item.listimage);
+            mBitmapUtils.display(holder.ivPic,GlobalConstants.SERVER_URL+item.listimage.substring(25));
             return convertView;
         }
     }

@@ -368,7 +368,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
             //下载图片--将图片设置为ImageView-避免内存溢出-缓存
             //BitmapUtils-XUtils
-            mBitmapUtils.display(view, imageUrl);
+            //mBitmapUtils.display(view, imageUrl);
+            mBitmapUtils.display(view,GlobalConstants.SERVER_URL+imageUrl.substring(25));
             //mBitmapUtils.display(view, imageUrl.replace("http://10.0.2.2:8080/zhbj",GlobalConstants.SERVER_URL));
             container.addView(view);
 
@@ -429,7 +430,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 holder.tvTitle.setTextColor(Color.BLACK);
             }
 
-            mBitmapUtils.display(holder.ivIcon, news.listimage);
+            //mBitmapUtils.display(holder.ivIcon, news.listimage);
+            mBitmapUtils.display(holder.ivIcon,GlobalConstants.SERVER_URL+news.listimage.substring(25));
             //mBitmapUtils.display(holder.ivIcon,news.listimage.replace("http://10.0.2.2:8080/zhbj", GlobalConstants.SERVER_URL));
             return convertView;
         }

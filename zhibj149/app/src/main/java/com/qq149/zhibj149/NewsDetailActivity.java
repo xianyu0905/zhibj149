@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.qq149.zhibj149.global.GlobalConstants;
 
 /**
  * 新闻详情页面
@@ -69,7 +70,8 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         mUrl=getIntent().getStringExtra("url");
 
         //mWebView.loadUrl("http://www.itheima.com");
-        mWebView.loadUrl(mUrl);
+        //mWebView.loadUrl(mUrl);
+        mWebView.loadUrl(GlobalConstants.SERVER_URL+mUrl.substring(25));
 
         WebSettings settings = mWebView.getSettings();
         settings.setBuiltInZoomControls(true);//显示缩放的按钮（wap网页不支持）

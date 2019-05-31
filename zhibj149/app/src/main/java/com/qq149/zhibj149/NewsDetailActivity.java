@@ -3,6 +3,7 @@ package com.qq149.zhibj149;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -19,6 +20,10 @@ import android.widget.ProgressBar;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.qq149.zhibj149.global.GlobalConstants;
+import com.tencent.connect.share.QQShare;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 
 /**
  * 新闻详情页面
@@ -45,8 +50,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     private ProgressBar pbLoading;
 
     private String mUrl;
-
-
+    private Tencent mTencent;
 
 
     @Override
@@ -123,6 +127,8 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
                 System.out.println("网页标题：" + title);
             }
         });
+    //分享
+        mTencent = Tencent.createInstance("101579631",this.getApplicationContext());
     }
 
     @Override
@@ -136,8 +142,21 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
 
                     break;
                 case R.id.btn_share:
-
-                    finish();
+//                    final Bundle params = new Bundle();
+//                    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+//                    params.putString(QQShare.SHARE_TO_QQ_TITLE,"安卓分享");
+//                    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,"我喜欢安卓");
+//                    params.putString(QQShare.SHARE_TO_QQ_AUDIO_URL,mUrl);
+//                    params.putString(QQShare.SHARE_TO_QQ_APP_NAME,"分享测试"+"101579631");
+//                    mTencent.shareToQQ(NewsDetailActivity.this,params,qqShareListener);
+                    final Bundle params = new Bundle();
+                    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+                    params.putString(QQShare.SHARE_TO_QQ_TITLE, "安卓分享");
+                    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  "我喜欢安卓");
+                    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, mUrl);
+                    params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  "分享测试"+"101579631");
+//                params.putInt(QQShare.SHARE_TO_QQ_EXT_INT,  "其他附加功能");
+                    mTencent.shareToQQ(NewsDetailActivity.this,params,qqShareListener);
                     break;
                 default:
                     break;
@@ -203,4 +222,18 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+    IUiListener qqShareListener = new IUiListener() {
+        @Override
+        public void onCancel() {
+
+        }
+        @Override
+        public void onComplete(Object response) {
+
+        }
+        @Override
+        public void onError(UiError e) {
+
+        }
+    };
 }

@@ -127,7 +127,10 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
                 System.out.println("网页标题：" + title);
             }
         });
-    //分享
+        /**
+         * QQ分享
+         */
+        //Tencent类是SDK的主要实现类，通过此访问腾讯开放的OpenAPI
         mTencent = Tencent.createInstance("101579631",this.getApplicationContext());
     }
 
@@ -142,17 +145,11 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
 
                     break;
                 case R.id.btn_share:
-//                    final Bundle params = new Bundle();
-//                    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
-//                    params.putString(QQShare.SHARE_TO_QQ_TITLE,"安卓分享");
-//                    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,"我喜欢安卓");
-//                    params.putString(QQShare.SHARE_TO_QQ_AUDIO_URL,mUrl);
-//                    params.putString(QQShare.SHARE_TO_QQ_APP_NAME,"分享测试"+"101579631");
-//                    mTencent.shareToQQ(NewsDetailActivity.this,params,qqShareListener);
+                    //调用分享接口
                     final Bundle params = new Bundle();
                     params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
-                    params.putString(QQShare.SHARE_TO_QQ_TITLE, "安卓分享");
-                    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  "我喜欢安卓");
+                    params.putString(QQShare.SHARE_TO_QQ_TITLE, "安卓分享");//要分享的标题
+                    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  "我喜欢安卓");//要分享的摘要
                     params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, mUrl);
                     params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  "分享测试"+"101579631");
 //                params.putInt(QQShare.SHARE_TO_QQ_EXT_INT,  "其他附加功能");

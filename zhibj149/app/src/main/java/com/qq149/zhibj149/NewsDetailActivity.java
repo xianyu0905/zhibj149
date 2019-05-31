@@ -130,6 +130,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         /**
          * QQ分享
          */
+
         //Tencent类是SDK的主要实现类，通过此访问腾讯开放的OpenAPI
         mTencent = Tencent.createInstance("101579631",this.getApplicationContext());
     }

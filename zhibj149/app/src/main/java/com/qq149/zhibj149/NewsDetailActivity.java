@@ -147,11 +147,12 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
                     break;
                 case R.id.btn_share:
                     //调用分享接口
+                    String newUrl = "http://47.101.174.248:8080/zhbj/10007/724D6A55496A11726628.html";
                     final Bundle params = new Bundle();
                     params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
                     params.putString(QQShare.SHARE_TO_QQ_TITLE, "安卓分享");//要分享的标题
                     params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  "我喜欢安卓");//要分享的摘要
-                    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, mUrl);
+                    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, newUrl);
                     params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  "分享测试"+"101579631");
 //                params.putInt(QQShare.SHARE_TO_QQ_EXT_INT,  "其他附加功能");
                     mTencent.shareToQQ(NewsDetailActivity.this,params,qqShareListener);
@@ -220,6 +221,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+    //回调函数
     IUiListener qqShareListener = new IUiListener() {
         @Override
         public void onCancel() {

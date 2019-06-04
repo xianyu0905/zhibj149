@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 
 import com.qq149.zhibj149.utils.PrefUtils;
 
+import cn.jpush.android.api.JPushInterface;
+
 /*第一周-1.闪屏页面开发
 * 旋转
 * 缩放
@@ -25,6 +27,11 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+
+        //极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 
         //寻找主键ID
         relativeLayout = findViewById(R.id.relativeLayout);
